@@ -1,38 +1,209 @@
-.App {
-  text-align: center;
+/* Reset & Body Styles */
+body {
+  margin: auto auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #ec4899, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-buttons .button {
+  background: linear-gradient(to right, #6366f1, #ec4899);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.nav-buttons .button:hover {
+  background: linear-gradient(to right, #4f46e5, #db2777);
+  transform: translateY(-1px);
+}
+
+/* Container Layout */
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Search and Filters */
+.search-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.search-filter-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 15px;
+}
+
+/* .search-filter input,
+.search-filter select {
+  padding: 0.6rem;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  min-width: 180px;
+  font-size: 1rem;
+} */
+.search-input,
+.type-select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-width: 200px;
+}
+
+
+
+/* Grid for Pokémon Cards */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+/* Pokémon Card Styling */
+.pokemon-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.2s ease;
+  border: 1px solid #eaeaea;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-4px);
+}
+
+.pokemon-card img {
+  width: 100px;
+  height: 100px;
+}
+
+/* Type Badges */
+.type-badge {
+  display: inline-block;
+  background-color: #e2e8f0;
+  color: #4b5563;
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  margin: 0.25rem;
+  font-size: 0.75rem;
+  text-transform: capitalize;
+}
+
+/* Loading & Empty State */
+.loading {
+  text-align: center;
+  font-size: 1.4rem;
+  color: #6366f1;
+}
+
+.empty-state {
+  text-align: center;
+  color: #999;
+  font-size: 1.2rem;
+}
+/* Details Button Like Meesho */
+.details-button {
+  background: linear-gradient(to right, #ff3e6c, #ff7096);
   color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 62, 108, 0.3);
+  transition: all 0.3s ease;
+  margin-top: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.details-button:hover {
+  background: linear-gradient(to right, #e60050, #ff4e7a);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(255, 62, 108, 0.4);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Favorite Icon - Top Right of Card */
+.favorite-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 22px;
+  color: #facc15; /* Bright yellow */
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.favorite-icon:hover {
+  transform: scale(1.2);
+}
+
+
+/* Responsive */
+@media (max-width: 640px) {
+  .header-title {
+    font-size: 1.4rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .nav-buttons .button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .search-filter {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-filter input,
+  .search-filter select {
+    width: 90%;
   }
 }
